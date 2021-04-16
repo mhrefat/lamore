@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::get('/test', function () {
     return view('test');
 });
 Route::get('/product/form', [ ProductController::class,'showForm'])->name('product.form');
+Route::resource('category', CategoryController::class);
 
 
 

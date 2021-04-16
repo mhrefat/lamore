@@ -147,6 +147,9 @@
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
+
+              @yield('content')
+
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
