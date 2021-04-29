@@ -33,19 +33,19 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/add_product" class="nav-link ">
+              <a href="{{ route('product.list') }}" class="nav-link ">
                 <i class="fas fa-plus-square nav-icon"></i>
                 <p>Add New Product</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/view_products" class="nav-link ">
+              <a href="{{ route('product.list') }}" class="nav-link ">
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>View All Products</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/print-labels" class="nav-link ">
+              <a href="{{ route('product.list') }} class="nav-link ">
                 <i class="fas fa-print nav-icon"></i>
                 <p>Print Labels</p>
               </a>
@@ -63,13 +63,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/create_category" class="nav-link ">
+              <a href="" class="nav-link ">
                 <i class="fas fa-plus-square nav-icon"></i>
                 <p>Add New Category</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/view_categories" class="nav-link ">
+              <a href="" class="nav-link ">
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>View All Categories</p>
               </a>
@@ -87,13 +87,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/create_brand" class="nav-link ">
+              <a href="{{ route('brand.form') }}" class="nav-link ">
                 <i class="fas fa-plus-square nav-icon"></i>
                 <p>Add New Brand</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/admin/view_brands" class="nav-link ">
+              <a href="" class="nav-link ">
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>View All Brands</p>
               </a>
@@ -111,31 +111,31 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/sales_invoice" class="nav-link ">
+              <a href="" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Sales Invoice</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/sales_return" class="nav-link ">
+              <a href="" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Sales Return</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/sales_report_date" class="nav-link ">
+              <a href="#" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Sales Report Date</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/sales_return_report_date" class="nav-link ">
+              <a href="#" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Sales Return Report</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/sales_report_brand" class="nav-link ">
+              <a href="#" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Sales Report By Brand</p>
               </a>
@@ -153,13 +153,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/purchase_products" class="nav-link ">
+              <a href="# class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Purchase Products</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/purchase_return" class="nav-link ">
+              <a href="#" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Purchase Return</p>
               </a>
@@ -171,7 +171,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://italy.kinetixbd.com/dashboard/purchase_report_date" class="nav-link ">
+              <a href="#" class="nav-link ">
                 <i class="fas fa-angle-right nav-icon"></i>
                 <p>Purchase Report</p>
               </a>

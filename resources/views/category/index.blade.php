@@ -114,7 +114,7 @@
                                 <form action="{{route('category.destroy',$category)}}" method="POST" >
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                 </form>
                                 </td>
                             @empty

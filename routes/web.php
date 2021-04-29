@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +25,22 @@ Route::get('/home', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/product/form', [ ProductController::class,'showForm'])->name('product.form');
+
+//RAHAAAT
+Route::get('/product/list', [ProductController::class,'productlist'])->name('product.list');
+Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+Route::post('product/update/{id}',[ProductController::class,'productupdate'])->name('product.update');
+Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+//jahid
 Route::resource('category', CategoryController::class);
+
+
+//MH
+Route::get('/brand/form',[BrandController::class,'showForm'])->name('brand.form');
+Route::post('/brand/form',[BrandController::class,'storeForm'])->name('brand.store');
+Route::post('/brand/update/{id}',[BrandController::class,'updateBrand'])->name('brand.update');
+Route::get('Brand/delete/{id}',[BrandController::class,'deleteBrand'])->name('delete.brand');
 
 
 

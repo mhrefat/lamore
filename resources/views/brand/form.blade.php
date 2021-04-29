@@ -1,158 +1,208 @@
 @extends('master')
-@section('page')
-<h1> Hello Madafaka</h1>
+@section('content')
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Modal AJAX Signup Form with Validations</title>
-    <meta name="description" content="Signup form in Boostrap Modal Popup with jQuery validations and AJAX form submit that returns JSON response." />
+<div class="container">
+    <div class="row justify-content-center">
+   
+        <div class="col-12">
+     
+            <div class="card">
+                <div class="card-header"><b>Total Brand : </b>
+               
+                <!-- showing message-->
+                @if(session()->has('message'))
+                 <p class="alert alert-success">{{session()->get('message')}}</p>
+                @endif
 
-    <!-- Bootstrap CSS -->
-    <link href="{{asset('modal')}}/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="{{asset('modal')}}/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="{{asset('modal')}}/css/custom.css" rel="stylesheet" />
-	<link href="{{asset('modal')}}/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
-	<link href="{{asset('modal')}}/css/styles.css" rel="stylesheet" />
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                    @if($errors->any())
+                       @foreach($errors->all() as $er)
+                         <p class="alert alert-danger">{{$er}}</p>
+                       @endforeach  
+                    @endif
 
-      ga('create', 'UA-47923629-1', 'gigagit.com');
-      ga('send', 'pageview');
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModalCenter">
+                Add
+                </button>
 
-    </script>
-</head>
-<body>
-
-    <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Modal AJAX Signup Form with Validations</h1>
-            <p class="lead">Signup form in Bootstrap Modal Popup with jQuery validations and AJAX form submit that returns JSON response.</p>
-            <hr class="my-4" />
-            <p>It uses Bootstrap 4 framework for responsive layout, modal popup, jQuery validations, submits form using AJAX callback method.</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="https://www.gigagit.com/item/bootstrap-modal-popup-signup-form-with-validations" role="button">Learn more</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-6 text-center align-self-center">
-                <p>Click on 'SIGNUP' to open signup popup form.</p>
-                <!-- Toggle button to open Modal Signup Popup Form -->
-                <a href="#_" class="btn btn-primary" data-toggle="modal" data-target="#modal_signup">SIGNUP</a>
-            </div>
-            <div class="col-sm-6 text-center align-self-center">
-                <h6>Result</h6>
-                <div id="modal_signup_result">
-                    <div class="alert">&nbsp;</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap Modal Signup Popup Form -->
-    <div class="modal fade" id="modal_signup" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <form id="modal_form_signup" novalidate="novalidate">
-                <div class="modal-content">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">
-                            <i class="fa fa-lock mr-1"></i>SIGNUP
-                        </h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add new Brand</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span>&times;</span>
+                        <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_signup_firstname">First Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <input type="text" id="modal_signup_firstname" name="modal_signup_firstname" class="form-control" placeholder="First Name" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_signup_lastname">Last Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <input type="text" id="modal_signup_lastname" name="modal_signup_lastname" class="form-control" placeholder="Last Name" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="modal_signup_email">Email address</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                                <input type="email" id="modal_signup_email" name="modal_signup_email" class="form-control" placeholder="Enter email" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="modal_signup_password">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-unlock-alt"></i>
-                                </span>
-                                <input type="password" id="modal_signup_password" name="modal_signup_password" class="form-control" placeholder="Password" />
-                            </div>
-                        </div>  
-                        <div class="form-group">
-                            <label for="modal_signup_confirm_password">Confirm Password</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-unlock-alt"></i>
-                                </span>
-                                <input type="password" id="modal_signup_confirm_password" name="modal_signup_confirm_password" class="form-control" placeholder="Confirm Password" />
-                            </div>
-                        </div>    
+
+
+
+                    <form method="post" action="{{ route('brand.store') }}">
+                     @csrf
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Brand name" name="name" value="{{old('name')}}">
+            
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" placeholder="Enter Brand description" name="description" value="{{old('description')}}">
+            
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="text" class="form-control" id="image" placeholder="Enter Brand image" name="image" value="{{old('image')}}">
+            
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Brand status" name="status" value="{{old('status')}}">
+            
+
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Brand url" name="url" value="{{old('url')}}">
+            
+                    </div>
+                   
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                        <button type="submit" class="btn btn-primary">SIGN-UP</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Insert" class="btn btn-primary">
+                
+                    </div>
+                    </form>
                     </div>
                 </div>
-            </form>
+                </div>
+
+                </div>
+
+                <div class="card-body">
+                 
+
+                   <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Updated at</th>
+                            <th scope="col" style="width:20%;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            @forelse($brands as $brand)
+                            <tr>
+                            <th scope="row">{{$loop->index+1}}</th>
+                            <td>{{$brand->name}}</td>
+                            <td>{{$brand->description}}</td>
+                            <td>{{$brand->image}}</td>
+                            <td>{{$brand->status}}</td>
+                            <td>{{$brand->url}}</td>
+                            <td>
+                             @if(isset($brand->created_at))
+                             {{ $brand->created_at->format('d/m/Y')}}
+                             @else
+                             {{'-'}}
+                             @endif
+                            </td>
+                            <td>
+                             @if(isset($brand->updated_at))
+                             {{ $brand->updated_at->diffForHumans()}}
+                             @else
+                             {{'-'}}
+                             @endif
+                            </td>
+                                <td>
+                               
+                                    <a class="btn btn-sm btn-info float-left" data-toggle="modal" data-target="#modal-<?php echo $brand->id;?>" value=<?php echo $brand->id;?> href="#">Update</a>
+
+                                    <!-- Modal -->
+                <div class="modal fade" id="modal-<?php echo $brand->id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Update Brand Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+    
+    
+    
+                        <form method="post" action="{{ route('brand.update',$brand->id) }}">
+                         @csrf
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Brand name" name="name" value="{{$brand->name}}">
+                
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" placeholder="Enter Brand description" name="description" value="{{$brand->description}}">
+                
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="text" class="form-control" id="image" placeholder="Enter Brand image" name="image" value="{{$brand->image}}">
+                
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Brand status" name="status" value="{{$brand->status}}">
+                
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="url">URL</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Brand url" name="url" value="{{$brand->url}}">
+                
+                        </div>
+                       
+    
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="Update" class="btn btn-primary">
+                    
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+
+                                    <a class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" href="{{ route('delete.brand',$brand->id) }}">Delete</a>
+                                </td>
+                            @empty
+                             <td colspan="10" class="text-center text-danger">No data available</td>
+                            @endforelse
+                               
+                            </tr>
+                            
+                        </tbody>
+                        
+                    </table>
+                        
+                </div>
+
         </div>
-    </div>
-
-
-    <footer class="footer">
-        <div class="container">
-            &copy; 2019 <a href="https://www.gigagit.com">gigagit.com</a>. All rights reserved.
         </div>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{asset('modal')}}/js/jquery-3.2.1.min.js"></script>
-    <script src="{{asset('modal')}}/js/popper.min.js"></script>
-    <script src="{{asset('modal')}}/js/bootstrap.min.js"></script>
-	<script src="{{asset('modal')}}/js/plugins/jquery-validation/jquery.validate.min.js"></script>
-	<script src="{{asset('modal')}}/js/app.js"></script>
-</body>
-</html>
-
-
+ </div>
+ 
+</div>
 
 
 @stop
